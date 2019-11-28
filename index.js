@@ -7,6 +7,8 @@ process.env.PORT = process.env.PORT || 3000;
 
 const app = express();
 
+const ThemeParks = require('themeparks');
+
 /*
  * =======================================================================
  * =======================================================================
@@ -58,8 +60,20 @@ if( process.env.NODE_ENV === 'development' ){
  * =======================================================================
  */
 
-app.get('/banana', (request, response)=>{
-  response.send("ehllo");
+app.get('/themeparks', (request, response)=>{
+
+  // construct our park objects and keep them in memory for fast access later
+  const Parks = {};
+  for (const park in ThemeParks.Parks) {
+    Parks[park] = new ThemeParks.Parks[park]();
+  }
+
+  // print each park's name, current location, and timezone
+  for (const park in Parks) {
+    console.log(`* ${Parks[park].Name} [${Parks[park].LocationString}]: (${Parks[park].Timezone})`);
+  }
+
+  response.send(Parks);
 });
 
 app.get('/react', (req, res) => {
