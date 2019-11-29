@@ -5,20 +5,14 @@ import styles from './style.scss';
 const cx = classnames.bind(styles)
 const axios = require('axios');
 
-class Form extends React.Component {
+class Rides extends React.Component {
 
   constructor(){
     super();
 
     this.state = {
-      clicked:false,
       park:null
     };
-  }
-
-  clickHandler(){
-
-    this.setState({clicked:!this.state.clicked})
   }
 
   getUSS(){
@@ -69,4 +63,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default Rides;

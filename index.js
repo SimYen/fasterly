@@ -8,11 +8,15 @@ process.env.PORT = process.env.PORT || 3000;
 const app = express();
 
 const ThemeParks = require('themeparks');
+// construct our park objects and keep them in memory for fast access later
+const Parks = {};
+for (const park in ThemeParks.Parks) {
+  Parks[park] = new ThemeParks.Parks[park]();
+}
 // access a specific park
 //  Create this *ONCE* and re-use this object for the lifetime of your application
 //  re-creating this every time you require access is very slow, and will fetch data repeatedly for no purpose
-const UniversalStudiosSingapore = new ThemeParks.Parks.UniversalStudiosSingapore();
-const ShanghaiDisneyResortMagicKingdom = new ThemeParks.Parks.ShanghaiDisneyResortMagicKingdom();
+
 /*
  * =======================================================================
  * =======================================================================
@@ -65,24 +69,26 @@ if( process.env.NODE_ENV === 'development' ){
  */
 
 app.get('/themeparks', (request, response)=>{
-
-  // construct our park objects and keep them in memory for fast access later
-  const Parks = {};
-  for (const park in ThemeParks.Parks) {
-    Parks[park] = new ThemeParks.Parks[park]();
-  }
-
+  const data = {}
+  // print each park's name, current location, and timezone
+  let parkArr = Object.keys(Parks)
+  console.log(parkArr)
+  let counter = 0
   // print each park's name, current location, and timezone
   for (const park in Parks) {
-    console.log(`* ${Parks[park].Name} [${Parks[park].LocationString}]: (${Parks[park].Timezone})`);
+    let key = parkArr[counter]
+    let value = Parks[park].Name;
+    data[`${key}`] = value
+    counter++
   }
+
   // console.log( Parks );
-  response.send( Parks );
+  response.send( data );
 });
 
 
 app.get('/UniversalStudiosSingapore', (request, response)=>{
-
+  const UniversalStudiosSingapore = Parks.UniversalStudiosSingapore;
   console.log(UniversalStudiosSingapore);
 
   // Access wait times by Promise
@@ -103,7 +109,7 @@ app.get('/UniversalStudiosSingapore', (request, response)=>{
 
 
 app.get('/ShanghaiDisneyResortMagicKingdom', (request, response)=>{
-
+  const ShanghaiDisneyResortMagicKingdom = Parks.ShanghaiDisneyResortMagicKingdom;
   console.log(ShanghaiDisneyResortMagicKingdom);
 
   // Access wait times by Promise
