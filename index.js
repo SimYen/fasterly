@@ -69,17 +69,18 @@ if( process.env.NODE_ENV === 'development' ){
  */
 
 app.get('/themeparks', (request, response)=>{
-  const data = {}
-  // print each park's name, current location, and timezone
+  const data = []
+
   let parkArr = Object.keys(Parks)
-  console.log(parkArr)
-  let counter = 0
+  let index = 0
   // print each park's name, current location, and timezone
   for (const park in Parks) {
-    let key = parkArr[counter]
-    let value = Parks[park].Name;
-    data[`${key}`] = value
-    counter++
+    let arr = []
+    arr.push(parkArr[index])
+    arr.push(Parks[park].Name)
+    arr.push(Parks[park].Timezone)
+    data.push(arr)
+    index++
   }
 
   // console.log( Parks );

@@ -37,9 +37,9 @@ class Themeparks extends React.Component {
 
     console.log(this.state.parks);
 
-    const parkNames = this.state.parks ? Object.values(this.state.parks).filter((park) => park.toLowerCase().includes(this.state.term.toLowerCase())).map((park) => {
+    const parkNames = this.state.parks ? this.state.parks.filter((park) => park[1].toLowerCase().includes(this.state.term.toLowerCase())).map((park) => {
       return(
-        <p>{park}</p>
+        <p>{park[1]} ({park[2]}) </p>
       )
     }) : "";
 
@@ -48,9 +48,7 @@ class Themeparks extends React.Component {
         <button className="btn btn-primary" onClick={() => { this.getParks() }}>
           View All Themeparks
         </button>
-        <p>Search
-          <input onChange = {(event) => { this.getTerm(event) }}/>
-        </p>
+        <p>Search by Park Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/><i>*to hide until all parks are loaded</i></p>
         <h3>Select Theme Park</h3>
         {parkNames}
       </div>
