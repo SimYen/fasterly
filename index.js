@@ -8,7 +8,11 @@ process.env.PORT = process.env.PORT || 3000;
 const app = express();
 
 const ThemeParks = require('themeparks');
-
+// access a specific park
+//  Create this *ONCE* and re-use this object for the lifetime of your application
+//  re-creating this every time you require access is very slow, and will fetch data repeatedly for no purpose
+const UniversalStudiosSingapore = new ThemeParks.Parks.UniversalStudiosSingapore();
+const ShanghaiDisneyResortMagicKingdom = new ThemeParks.Parks.ShanghaiDisneyResortMagicKingdom();
 /*
  * =======================================================================
  * =======================================================================
@@ -72,11 +76,53 @@ app.get('/themeparks', (request, response)=>{
   for (const park in Parks) {
     console.log(`* ${Parks[park].Name} [${Parks[park].LocationString}]: (${Parks[park].Timezone})`);
   }
-
-  response.send(Parks);
+  // console.log( Parks );
+  response.send( Parks );
 });
 
-app.get('/react', (req, res) => {
+
+app.get('/UniversalStudiosSingapore', (request, response)=>{
+
+  console.log(UniversalStudiosSingapore);
+
+  // Access wait times by Promise
+  const CheckWaitTimes = () => {
+      UniversalStudiosSingapore.GetWaitTimes().then((rideTimes) => {
+        response.json( rideTimes );
+        rideTimes.forEach((ride) => {
+            console.log(`${ride.name}: ${ride.waitTime} minutes wait (${ride.status})`);
+        });
+      }).catch((error) => {
+          console.error(error);
+      }).then(() => {
+          setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
+      });
+  };
+  CheckWaitTimes();
+});
+
+
+app.get('/ShanghaiDisneyResortMagicKingdom', (request, response)=>{
+
+  console.log(ShanghaiDisneyResortMagicKingdom);
+
+  // Access wait times by Promise
+  const CheckWaitTimes = () => {
+      ShanghaiDisneyResortMagicKingdom.GetWaitTimes().then((rideTimes) => {
+        response.json( rideTimes );
+        rideTimes.forEach((ride) => {
+            console.log(`${ride.name}: ${ride.waitTime} minutes wait (${ride.status})`);
+        });
+      }).catch((error) => {
+          console.error(error);
+      }).then(() => {
+          setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
+      });
+  };
+  CheckWaitTimes();
+});
+
+app.get('/', (req, res) => {
   res.sendFile(resolve(clientBuildPath, 'index.html'))
 });
 

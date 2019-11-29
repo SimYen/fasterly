@@ -7,8 +7,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h3>Queue Less, Play More</h3>
         <Form />
-        Welcome.
       </div>
     );
   }
