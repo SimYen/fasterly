@@ -44,20 +44,22 @@ class Rides extends React.Component {
   }
 
   render() {
+    // receive park selected from App
+    const park = this.props.park
 
-    const rides = this.state.park ? this.state.park.map((ride) => {
-      return(
-        <ul>
-          <li>{ride.name}: {ride.waitTime} minutes wait ({ride.status})</li>
-        </ul>
-      )
-    }) :"";
+
+    // const rides = this.state.park ? this.state.park.map((ride) => {
+    //   return(
+    //     <ul>
+    //       <li>{ride.name}: {ride.waitTime} minutes wait ({ride.status})</li>
+    //     </ul>
+    //   )
+    // }) :"";
 
     return (
       <div>
         <button onClick={()=>{this.getUSS()}}>USS Rides</button>
         <button onClick={()=>{this.getSDP()}}>SDP Rides</button>
-        {rides}
       </div>
     );
   }

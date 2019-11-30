@@ -13,13 +13,18 @@ class App extends React.Component {
     };
   }
 
+  getPark(park) {
+    this.setState({park});
+    console.log( "Park selected", park);
+  }
+
   render() {
     return (
       <div>
         <h3>Queue Less, Play More</h3>
         <div className="row">
-          <Themeparks />
-          <Rides />
+          <Themeparks setPark={(park)=>this.getPark(park)}/>
+          <Rides park={this.state.park}/>
         </div>
       </div>
     );
