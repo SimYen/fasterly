@@ -116,13 +116,13 @@ app.get('/ShanghaiDisneyResortMagicKingdom', (request, response)=>{
   const CheckWaitTimes = () => {
       ShanghaiDisneyResortMagicKingdom.GetWaitTimes().then((rideTimes) => {
         response.json( rideTimes );
-        rideTimes.forEach((ride) => {
-            console.log(`${ride.name}: ${ride.waitTime} minutes wait (${ride.status})`);
-        });
-      }).catch((error) => {
-          console.error(error);
-      }).then(() => {
-          setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
+      //   rideTimes.forEach((ride) => {
+      //       console.log(`${ride.name}: ${ride.waitTime} minutes wait (${ride.status})`);
+      //   });
+      // }).catch((error) => {
+      //     console.error(error);
+      // }).then(() => {
+      //     setTimeout(CheckWaitTimes, 1000 * 60 * 5); // refresh every 5 minutes
       });
   };
   CheckWaitTimes();
