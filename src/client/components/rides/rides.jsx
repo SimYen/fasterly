@@ -29,9 +29,10 @@ class Rides extends React.Component {
           this.setState({ park: data })
         }).catch((error)=>{
           console.log(error);
-        }).then(() => {
-            setTimeout(CheckWaitTimes, 1000 * 60 ); // refresh every 1 minute
-        });
+        })
+        // .then(() => {
+        //     setTimeout(CheckWaitTimes, 1000 * 60 ); // refresh every 1 minute
+        // });
     }
     CheckWaitTimes();
   }
