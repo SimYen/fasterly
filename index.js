@@ -16,7 +16,7 @@ for (const park in ThemeParks.Parks) {
 // access a specific park
 //  Create this *ONCE* and re-use this object for the lifetime of your application
 //  re-creating this every time you require access is very slow, and will fetch data repeatedly for no purpose
-
+const ShanghaiDisneyResortMagicKingdom = Parks.ShanghaiDisneyResortMagicKingdom;
 /*
  * =======================================================================
  * =======================================================================
@@ -109,7 +109,7 @@ app.get('/UniversalStudiosSingapore', (request, response)=>{
 
 
 app.get('/ShanghaiDisneyResortMagicKingdom', (request, response)=>{
-  const ShanghaiDisneyResortMagicKingdom = Parks.ShanghaiDisneyResortMagicKingdom;
+
   console.log(ShanghaiDisneyResortMagicKingdom);
 
   // Access wait times by Promise

@@ -13,8 +13,9 @@ class App extends React.Component {
     };
   }
 
+  // set selected park
   getPark(park) {
-    this.setState({park});
+    this.setState({ park });
     console.log( "Park selected", park);
   }
 

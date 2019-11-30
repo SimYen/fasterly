@@ -19,10 +19,10 @@ class Themeparks extends React.Component {
     axios.get(url)
       .then((response) => {
         const data = response.data
-        console.log( data )
+        console.log( data );
         this.setState({ parks: data })
       }).catch((error)=>{
-        console.log(error);
+        console.log( error );
       })
   }
 
@@ -46,7 +46,9 @@ class Themeparks extends React.Component {
         <button className="btn btn-primary" onClick={() => { this.getParks() }}>
           View All Themeparks
         </button>
-        <p>Search by Park Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/><i>*to hide until all parks are loaded<br/>*to add filter by area option</i></p>
+        <p>Search by Park Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
+        <i>*to hide until all parks are loaded<br/>
+        *to add filter by area option</i></p>
         <h3>Select Theme Park</h3>
         {parkNames}
       </div>
