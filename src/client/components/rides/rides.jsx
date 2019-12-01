@@ -52,20 +52,25 @@ class Rides extends React.Component {
     // set key of selected park
     const parkKey = park ? park.key : "";
 
-    const rides = this.state.park ? this.state.park.filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())).map((ride, index) => {
-      return(
-        <li key={index}>{ride.name}: {ride.waitTime} minutes wait ({ride.status}, Fastpass: { ride.fastPass ? "Available" : "Not Available" })</li>
-      )
+    const rides = this.state.park ? this.state.park
+        .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase()))
+        .sort((a, b) => (a.waitTime > b.waitTime) ? 1 : -1)
+        .map((ride, index) => {
+          return(
+            <li key={index}>{ride.name}: {ride.waitTime} minutes wait ({ride.status}, Fastpass: { ride.fastPass ? "Available" : "Not Available" })</li>
+          )
     }) :"";
 
     return (
       <div>
         <h3>{parkName}</h3>
+        <i>*to get park opening & closing time</i><br/>
         <button onClick={()=>{this.getRides(parkKey)}}>Load Rides</button>
         <p>Search by Ride Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
         <i>*to hide until all rides are loaded<br/>
-        *to add filter by status, fastPass, and sortBy waitTime</i></p>
-        <h4>Rides</h4>
+        *to add filter by status, fastPass</i></p>
+
+        <h4>Rides (by order of waiting time)</h4>
         <ul>
           {rides}
         </ul>

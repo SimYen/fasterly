@@ -9,8 +9,11 @@ class Themeparks extends React.Component {
 
     this.state = {
       parks:null,
-      term:""
+      term:"",
+      area:""
     };
+
+    this.getLocation = this.getLocation.bind(this);
   }
 
   getParks() {
@@ -33,12 +36,19 @@ class Themeparks extends React.Component {
     this.setState({term});
   }
 
-  render() {
+  getLocation(event) {
+    this.setState({area: event.target.value});
+  }
 
-    const parkNames = this.state.parks ? this.state.parks.filter((park) => park.name.toLowerCase().includes(this.state.term.toLowerCase())).map((park, index) => {
-      return(
-        <p key={index}>{park.name} ({park.area}) <button className="btn btn-info" onClick={() => { this.props.setPark(park) }}>View</button></p>
-      )
+  render() {
+    const parks = this.state.parks ? this.state.parks.sort((a, b) => (a.name > b.name) ? 1 : -1) : "";
+    const parkNames = parks ? parks
+      .filter((park) => park.name.toLowerCase().includes(this.state.term.toLowerCase())
+                      && park.area.toLowerCase().includes(this.state.area.toLowerCase()))
+      .map((park, index) => {
+        return(
+          <p key={index}>{park.name} <button className="btn btn-info" onClick={() => { this.props.setPark(park) }}>View</button></p>
+        )
     }) : "";
 
     return (
@@ -47,8 +57,30 @@ class Themeparks extends React.Component {
           View All Themeparks
         </button>
         <p>Search by Park Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
-        <i>*to hide until all parks are loaded<br/>
-        *to add filter by area option</i></p>
+        <i>*to hide until all parks are loaded</i></p>
+        <label>
+          Select Location:
+          <select value={this.state.area} onChange={this.getLocation}>
+            <option value=""> Choose timezone</option>
+            <optgroup label="Asia"/>
+              <option value="Hong_Kong">Hong Kong</option>
+              <option value="Shanghai">Shanghai</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Tokyo">Tokyo</option>
+            <optgroup label="America"/>
+              <option value="Chicago">Chicago</option>
+              <option value="Los_Angeles">Los Angeles</option>
+              <option value="New_York">New York</option>
+              <option value="Mexico_City">Mexico City</option>
+              <option value="Toronto">Toronto</option>
+            <optgroup label="Europe"/>
+              <option value="Amsterdam">Amsterdam</option>
+              <option value="Berlin">Berlin</option>
+              <option value="London">London</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Paris">Paris</option>
+          </select>
+        </label>
         <h3>Select Theme Park</h3>
         {parkNames}
       </div>
