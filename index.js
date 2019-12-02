@@ -281,6 +281,16 @@ app.get('/ShanghaiDisneyResortMagicKingdom', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/OpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    ShanghaiDisneyResortMagicKingdom.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 // Tokyo Disney Resort
 app.get('/TokyoDisneyResortMagicKingdom', (request, response)=>{
   // Access wait times by Promise

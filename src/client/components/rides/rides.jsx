@@ -4,6 +4,8 @@ import styles from './style.scss';
 
 const cx = classnames.bind(styles)
 const axios = require('axios');
+var moment = require('moment');
+moment().format();
 
 class Rides extends React.Component {
 
@@ -67,7 +69,7 @@ class Rides extends React.Component {
         .map((ride, index) => {
           return(
             <li key={index}>{ride.name}: {ride.waitTime} minutes wait
-            ({ride.status}, Fastpass: { ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>{ride.meta.fastPassStartTime} to {ride.meta.fastPassEndTime}</span> : "Fully redeemed" ) : "Not Available" })</li>
+            ({ride.status}, Fastpass: { ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>{moment(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : "Fully redeemed" ) : "Not Available" })</li>
           )
     }) :"";
 
