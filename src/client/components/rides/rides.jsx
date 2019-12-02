@@ -13,6 +13,7 @@ class Rides extends React.Component {
     super();
 
     this.state = {
+      key:null,
       hours:null,
       rides:null,
       term:"",
@@ -22,6 +23,26 @@ class Rides extends React.Component {
 
     this.getTerm = this.getTerm.bind(this);
     this.getOperating = this.getOperating.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.park) {
+      if (props.park.key !== state.key) {
+      return {
+        key: props.park.key
+      };
+    }
+  }
+
+    // Return null if the state hasn't changed
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.park !== prevProps.park) {
+      this.getTimes(this.props.park.key);
+      this.getRides(this.props.park.key);
+    }
   }
 
   getTimes(park) {
@@ -83,12 +104,17 @@ class Rides extends React.Component {
     // set key of selected park
     const parkKey = park ? park.key : "";
 
+    // if (this.props.park) {
+    //   this.getTimes(parkKey);
+    //   this.getRides(parkKey);
+    // }
+
     const hours = this.state.hours ? <p>Opens: {moment(this.state.hours.openingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} Closes: {moment(this.state.hours.closingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</p> : "";
 
     const rides = this.state.park ? this.state.park
         .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())
             && ride.status.toLowerCase().includes(this.state.operating ? "Operating".toLowerCase() : ""))
-        .sort((a, b) => (a.name > b.name) ? 1 : -1)
+        .sort((a, b) => (a.name < b.name) ? 1 : -1)
         .sort((a, b) => (a.waitTime > b.waitTime) ? 1 : -1)
         .map((ride, index) => {
           return(
@@ -100,12 +126,11 @@ class Rides extends React.Component {
     return (
       <div>
         <h3>{parkName}</h3>
-        <button onClick={()=>{this.getTimes(parkKey)}}>Park Hours</button>
-        {hours}<br/>
-        <button onClick={()=>{this.getRides(parkKey)}}>Load Rides</button>
-        <p>Search by Ride Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
-        <i>*to hide until all rides are loaded</i></p>
-        <h4>Rides (by order of waiting time)</h4>
+        {/* <button onClick={()=>{this.getTimes(parkKey)}}>Park Hours</button> */}
+        {hours}
+        {/* <button onClick={()=>{this.getRides(parkKey)}}>Load Rides</button> */}
+        <h4>Rides&nbsp;&nbsp;<input placeholder="Search by ride name" onChange = {(event) => { this.getTerm(event) }}/></h4>
+        <i>*Displaying rides in operation, by alphabetical order, in order of waiting time.</i>
         <p>
           <input type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
           {' '} See All Rides
