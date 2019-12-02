@@ -24,7 +24,7 @@ class App extends React.Component {
       <div>
         <h3>Queue Less, Play More</h3>
         <div className="row">
-          <Themeparks setPark={(park)=>this.getPark(park)}/>
+          <Themeparks setPark={(park)=>this.getPark(park)} />
           <Rides park={this.state.park}/>
         </div>
       </div>

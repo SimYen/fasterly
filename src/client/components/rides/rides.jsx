@@ -16,12 +16,32 @@ class Rides extends React.Component {
       hours:null,
       rides:null,
       term:"",
-      operating: false,
+      operating: true,
       fastPassStatus: false
     };
 
     this.getTerm = this.getTerm.bind(this);
     this.getOperating = this.getOperating.bind(this);
+  }
+
+  getTimes(park) {
+    // get url of selected park
+    const url = '/' + park + 'OpeningTimes';
+
+    const CheckOpeningTimes = () => {
+      axios.get(url)
+        .then((response) => {
+          const data = response.data
+          console.log( "hours:", data);
+          this.setState({ hours: data })
+        }).catch((error)=>{
+          console.log(error);
+        })
+        // .then(() => {
+        //     setTimeout(CheckWaitTimes, 1000 * 60 ); // refresh every 1 minute
+        // });
+    }
+    CheckOpeningTimes();
   }
 
   getRides(park) {
@@ -43,26 +63,6 @@ class Rides extends React.Component {
         // });
     }
     CheckWaitTimes();
-  }
-
-  getTimes() {
-    // get url of selected park
-    const url = '/OpeningTimes';
-
-    const CheckOpeningTimes = () => {
-      axios.get(url)
-        .then((response) => {
-          const data = response.data
-          console.log( "hours:", data);
-          this.setState({ hours: data })
-        }).catch((error)=>{
-          console.log(error);
-        })
-        // .then(() => {
-        //     setTimeout(CheckWaitTimes, 1000 * 60 ); // refresh every 1 minute
-        // });
-    }
-    CheckOpeningTimes();
   }
 
   getTerm(event) {
@@ -88,6 +88,7 @@ class Rides extends React.Component {
     const rides = this.state.park ? this.state.park
         .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())
             && ride.status.toLowerCase().includes(this.state.operating ? "Operating".toLowerCase() : ""))
+        .sort((a, b) => (a.name > b.name) ? 1 : -1)
         .sort((a, b) => (a.waitTime > b.waitTime) ? 1 : -1)
         .map((ride, index) => {
           return(
@@ -99,16 +100,15 @@ class Rides extends React.Component {
     return (
       <div>
         <h3>{parkName}</h3>
-        <button onClick={()=>{this.getTimes()}}>Park Hours</button>
+        <button onClick={()=>{this.getTimes(parkKey)}}>Park Hours</button>
         {hours}<br/>
         <button onClick={()=>{this.getRides(parkKey)}}>Load Rides</button>
         <p>Search by Ride Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
-        <i>*to hide until all rides are loaded<br/>
-        *to add filter by fastPass but display all rides if unchecked</i></p>
+        <i>*to hide until all rides are loaded</i></p>
         <h4>Rides (by order of waiting time)</h4>
         <p>
           <input type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
-          {' '} In Operation
+          {' '} See All Rides
         </p>
         <ul>
           {rides}

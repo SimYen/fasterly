@@ -17,6 +17,10 @@ class Themeparks extends React.Component {
     this.getLocation = this.getLocation.bind(this);
   }
 
+  componentDidMount(){
+    this.getParks();
+  }
+
   getParks() {
     const url = '/themeparks';
     // get list of themeparks
@@ -48,21 +52,20 @@ class Themeparks extends React.Component {
                       && park.area.toLowerCase().includes(this.state.area.toLowerCase()))
       .map((park, index) => {
         return(
-          <p key={index}>{park.name} <button className="btn btn-info" onClick={() => { this.props.setPark(park) }}>View</button></p>
+          <p key={index}><a onClick={() => { this.props.setPark(park) }}>{park.name}</a></p>
         )
     }) : "";
 
     return (
-      <div className="col">
-        <button className="btn btn-primary" onClick={() => { this.getParks() }}>
+      <div>
+        {/* <button className="btn btn-primary" onClick={() => { this.getParks() }}>
           View All Themeparks
-        </button>
-        <p>Search by Park Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
-        <i>*to hide until all parks are loaded</i></p>
-        <label>
-          Select Location:
+        </button> */}
+        <h3>Select Themepark&nbsp;&nbsp;
+        <input placeholder="Search by park name" onChange = {(event) => { this.getTerm(event) }}/>
+        &nbsp;<label>
           <select value={this.state.area} onChange={this.getLocation}>
-            <option value=""> Choose timezone</option>
+            <option value=""> Filter by timezone</option>
             <optgroup label="Asia"/>
               <option value="Hong_Kong">Hong Kong</option>
               <option value="Shanghai">Shanghai</option>
@@ -81,8 +84,7 @@ class Themeparks extends React.Component {
               <option value="Madrid">Madrid</option>
               <option value="Paris">Paris</option>
           </select>
-        </label>
-        <h3>Select Theme Park</h3>
+        </label></h3>
         {parkNames}
       </div>
     );

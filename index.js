@@ -177,6 +177,17 @@ app.get('/themeparks', (request, response)=>{
 });
 
 // Walt Disney World Resort
+
+app.get('/WaltDisneyWorldMagicKingdomOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    WaltDisneyWorldMagicKingdom.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/WaltDisneyWorldMagicKingdom', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -185,6 +196,16 @@ app.get('/WaltDisneyWorldMagicKingdom', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/WaltDisneyWorldEpcotOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    WaltDisneyWorldEpcot.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/WaltDisneyWorldEpcot', (request, response)=>{
@@ -197,6 +218,16 @@ app.get('/WaltDisneyWorldEpcot', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/WaltDisneyWorldHollywoodStudiosOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    WaltDisneyWorldHollywoodStudios.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/WaltDisneyWorldHollywoodStudios', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -205,6 +236,16 @@ app.get('/WaltDisneyWorldHollywoodStudios', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/WaltDisneyWorldAnimalKingdomOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    WaltDisneyWorldAnimalKingdom.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/WaltDisneyWorldAnimalKingdom', (request, response)=>{
@@ -218,6 +259,17 @@ app.get('/WaltDisneyWorldAnimalKingdom', (request, response)=>{
 });
 
 // Disneyland Resort
+
+app.get('/DisneylandResortMagicKingdomOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    DisneylandResortMagicKingdom.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/DisneylandResortMagicKingdom', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -226,6 +278,16 @@ app.get('/DisneylandResortMagicKingdom', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/DisneylandResortCaliforniaAdventureOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    DisneylandResortCaliforniaAdventure.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/DisneylandResortCaliforniaAdventure', (request, response)=>{
@@ -239,6 +301,17 @@ app.get('/DisneylandResortCaliforniaAdventure', (request, response)=>{
 });
 
 // Disneyland Paris
+
+app.get('/DisneylandParisMagicKingdomOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    DisneylandParisMagicKingdom.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/DisneylandParisMagicKingdom', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -247,6 +320,16 @@ app.get('/DisneylandParisMagicKingdom', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/DisneylandParisWaltDisneyStudiosOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    DisneylandParisWaltDisneyStudios.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/DisneylandParisWaltDisneyStudios', (request, response)=>{
@@ -260,6 +343,17 @@ app.get('/DisneylandParisWaltDisneyStudios', (request, response)=>{
 });
 
 // Hong Kong Disneyland
+
+app.get('/HongKongDisneylandOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    HongKongDisneyland.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/HongKongDisneyland', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -271,6 +365,17 @@ app.get('/HongKongDisneyland', (request, response)=>{
 });
 
 // Shanghai Disneyland
+
+app.get('/ShanghaiDisneyResortMagicKingdomOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    ShanghaiDisneyResortMagicKingdom.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/ShanghaiDisneyResortMagicKingdom', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -281,17 +386,18 @@ app.get('/ShanghaiDisneyResortMagicKingdom', (request, response)=>{
   CheckWaitTimes();
 });
 
-app.get('/OpeningTimes', (request, response)=>{
+// Tokyo Disney Resort
+
+app.get('/TokyoDisneyResortMagicKingdomOpeningTimes', (request, response)=>{
   // you can also call GetOpeningTimes on themeparks objects to get park opening hours
   const CheckOpeningTimes = () => {
-    ShanghaiDisneyResortMagicKingdom.GetOpeningTimes().then((openingTimes) => {
+    TokyoDisneyResortMagicKingdom.GetOpeningTimes().then((openingTimes) => {
       response.json( openingTimes[0] )
     });
   };
   CheckOpeningTimes();
 });
 
-// Tokyo Disney Resort
 app.get('/TokyoDisneyResortMagicKingdom', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -300,6 +406,16 @@ app.get('/TokyoDisneyResortMagicKingdom', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/TokyoDisneyResortDisneySeaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    TokyoDisneyResortDisneySea.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/TokyoDisneyResortDisneySea', (request, response)=>{
@@ -313,6 +429,17 @@ app.get('/TokyoDisneyResortDisneySea', (request, response)=>{
 });
 
 // Europa
+
+app.get('/EuropaParkOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    EuropaPark.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/EuropaPark', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -324,6 +451,17 @@ app.get('/EuropaPark', (request, response)=>{
 });
 
 // Parc Asterix
+
+app.get('/AsterixParkOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    AsterixPark.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/AsterixPark', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -335,6 +473,17 @@ app.get('/AsterixPark', (request, response)=>{
 });
 
 // Cedar Fair Parks
+
+app.get('/CaliforniasGreatAmericaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    CaliforniasGreatAmerica.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/CaliforniasGreatAmerica', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -343,6 +492,16 @@ app.get('/CaliforniasGreatAmerica', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/CanadasWonderlandOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    CanadasWonderland.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/CanadasWonderland', (request, response)=>{
@@ -355,6 +514,16 @@ app.get('/CanadasWonderland', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/CarowindsOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    Carowinds.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/Carowinds', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -363,6 +532,16 @@ app.get('/Carowinds', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/CedarPointOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    CedarPoint.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/CedarPoint', (request, response)=>{
@@ -375,6 +554,16 @@ app.get('/CedarPoint', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/KingsIslandOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    KingsIsland.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/KingsIsland', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -383,6 +572,16 @@ app.get('/KingsIsland', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/KnottsBerryFarmOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    KnottsBerryFarm.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/KnottsBerryFarm', (request, response)=>{
@@ -396,6 +595,17 @@ app.get('/KnottsBerryFarm', (request, response)=>{
 });
 
 // Herschend Parks
+
+app.get('/DollywoodOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    Dollywood.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/Dollywood', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -404,6 +614,16 @@ app.get('/Dollywood', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SilverDollarCityOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SilverDollarCity.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SilverDollarCity', (request, response)=>{
@@ -417,6 +637,17 @@ app.get('/SilverDollarCity', (request, response)=>{
 });
 
 // Seaworld
+
+app.get('/SeaworldOrlandoOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SeaworldOrlando.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SeaworldOrlando', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -428,6 +659,17 @@ app.get('/SeaworldOrlando', (request, response)=>{
 });
 
 // Busch Gardens Parks
+
+app.get('/BuschGardensTampaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    BuschGardensTampa.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/BuschGardensTampa', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -436,6 +678,16 @@ app.get('/BuschGardensTampa', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/BuschGardensWilliamsburgOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    BuschGardensWilliamsburg.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/BuschGardensWilliamsburg', (request, response)=>{
@@ -449,6 +701,17 @@ app.get('/BuschGardensWilliamsburg', (request, response)=>{
 });
 
 // Efteling
+
+app.get('/EftelingOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    Efteling.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/Efteling', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -460,6 +723,17 @@ app.get('/Efteling', (request, response)=>{
 });
 
 // Hersheypark
+
+app.get('/HersheyParkOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    HersheyPark.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/HersheyPark', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -471,6 +745,17 @@ app.get('/HersheyPark', (request, response)=>{
 });
 
 // Universal Florida
+
+app.get('/UniversalStudiosFloridaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    UniversalStudiosFlorida.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/UniversalStudiosFlorida', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -481,6 +766,16 @@ app.get('/UniversalStudiosFlorida', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/UniversalIslandsOfAdventureOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    UniversalIslandsOfAdventure.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/UniversalIslandsOfAdventure', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -489,6 +784,16 @@ app.get('/UniversalIslandsOfAdventure', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/UniversalVolcanoBayOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    UniversalVolcanoBay.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/UniversalVolcanoBay', (request, response)=>{
@@ -502,6 +807,17 @@ app.get('/UniversalVolcanoBay', (request, response)=>{
 });
 
 // Universal Hollywood
+
+app.get('/UniversalStudiosHollywoodOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    UniversalStudiosHollywood.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/UniversalStudiosHollywood', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -513,6 +829,17 @@ app.get('/UniversalStudiosHollywood', (request, response)=>{
 });
 
 // Universal Studios Singapore
+
+app.get('/UniversalStudiosSingaporeOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    UniversalStudiosSingapore.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/UniversalStudiosSingapore', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -524,6 +851,17 @@ app.get('/UniversalStudiosSingapore', (request, response)=>{
 });
 
 // Universal Studios Japan
+
+app.get('/UniversalStudiosJapanOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    UniversalStudiosJapan.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/UniversalStudiosJapan', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -535,6 +873,17 @@ app.get('/UniversalStudiosJapan', (request, response)=>{
 });
 
 // Six Flags Parks
+
+app.get('/SixFlagsOverTexasOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsOverTexas.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsOverTexas', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -543,6 +892,16 @@ app.get('/SixFlagsOverTexas', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsOverGeorgiaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsOverGeorgia.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsOverGeorgia', (request, response)=>{
@@ -555,6 +914,16 @@ app.get('/SixFlagsOverGeorgia', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsStLouisOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsStLouis.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsStLouis', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -563,6 +932,16 @@ app.get('/SixFlagsStLouis', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsGreatAdventureOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsGreatAdventure.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsGreatAdventure', (request, response)=>{
@@ -575,6 +954,16 @@ app.get('/SixFlagsGreatAdventure', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsMagicMountainOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsMagicMountain.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsMagicMountain', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -583,6 +972,16 @@ app.get('/SixFlagsMagicMountain', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsGreatAmericaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsGreatAmerica.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsGreatAmerica', (request, response)=>{
@@ -595,6 +994,16 @@ app.get('/SixFlagsGreatAmerica', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsFiestaTexasOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsFiestaTexas.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsFiestaTexas', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -603,6 +1012,16 @@ app.get('/SixFlagsFiestaTexas', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsHurricaneHarborArlingtonOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsHurricaneHarborArlington.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsHurricaneHarborArlington', (request, response)=>{
@@ -615,6 +1034,16 @@ app.get('/SixFlagsHurricaneHarborArlington', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsHurricaneHarborLosAngelesOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsHurricaneHarborLosAngeles.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsHurricaneHarborLosAngeles', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -623,6 +1052,16 @@ app.get('/SixFlagsHurricaneHarborLosAngeles', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsAmericaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsAmerica.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsAmerica', (request, response)=>{
@@ -635,6 +1074,16 @@ app.get('/SixFlagsAmerica', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsDiscoveryKingdomOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsDiscoveryKingdom.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsDiscoveryKingdom', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -643,6 +1092,16 @@ app.get('/SixFlagsDiscoveryKingdom', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsNewEnglandOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsNewEngland.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsNewEngland', (request, response)=>{
@@ -655,6 +1114,16 @@ app.get('/SixFlagsNewEngland', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsHurricaneHarborJacksonOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsHurricaneHarborJackson.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsHurricaneHarborJackson', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -663,6 +1132,16 @@ app.get('/SixFlagsHurricaneHarborJackson', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/TheGreatEscapeOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    TheGreatEscape.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/TheGreatEscape', (request, response)=>{
@@ -675,6 +1154,16 @@ app.get('/TheGreatEscape', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsWhiteWaterAtlantaOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsWhiteWaterAtlanta.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsWhiteWaterAtlanta', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -683,6 +1172,16 @@ app.get('/SixFlagsWhiteWaterAtlanta', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsMexicoOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsMexico.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsMexico', (request, response)=>{
@@ -695,6 +1194,16 @@ app.get('/SixFlagsMexico', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/LaRondeMontrealOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    LaRondeMontreal.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/LaRondeMontreal', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -705,6 +1214,16 @@ app.get('/LaRondeMontreal', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/SixFlagsHurricaneHarborOaxtepecOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsHurricaneHarborOaxtepec.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/SixFlagsHurricaneHarborOaxtepec', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -713,6 +1232,16 @@ app.get('/SixFlagsHurricaneHarborOaxtepec', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/SixFlagsHurricaneHarborConcordOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    SixFlagsHurricaneHarborConcord.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/SixFlagsHurricaneHarborConcord', (request, response)=>{
@@ -726,6 +1255,17 @@ app.get('/SixFlagsHurricaneHarborConcord', (request, response)=>{
 });
 
 // PortAventura
+
+app.get('/PortAventuraOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    PortAventura.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/PortAventura', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -734,6 +1274,16 @@ app.get('/PortAventura', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/FerrariLandOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    FerrariLand.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/FerrariLand', (request, response)=>{
@@ -747,6 +1297,17 @@ app.get('/FerrariLand', (request, response)=>{
 });
 
 // Merlin Parks
+
+app.get('/AltonTowersOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    AltonTowers.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/AltonTowers', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -757,6 +1318,16 @@ app.get('/AltonTowers', (request, response)=>{
   CheckWaitTimes();
 });
 
+app.get('/ThorpeParkOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    ThorpePark.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/ThorpePark', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -765,6 +1336,16 @@ app.get('/ThorpePark', (request, response)=>{
       });
   };
   CheckWaitTimes();
+});
+
+app.get('/ChessingtonWorldOfAdventuresOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    ChessingtonWorldOfAdventures.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
 });
 
 app.get('/ChessingtonWorldOfAdventures', (request, response)=>{
@@ -778,6 +1359,17 @@ app.get('/ChessingtonWorldOfAdventures', (request, response)=>{
 });
 
 // Bellewaerde
+
+app.get('/BellewaerdeOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    Bellewaerde.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/Bellewaerde', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -789,6 +1381,17 @@ app.get('/Bellewaerde', (request, response)=>{
 });
 
 // Phantasialand
+
+app.get('/PhantasialandOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    Phantasialand.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/Phantasialand', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
@@ -800,6 +1403,17 @@ app.get('/Phantasialand', (request, response)=>{
 });
 
 // Heidepark
+
+app.get('/HeideParkOpeningTimes', (request, response)=>{
+  // you can also call GetOpeningTimes on themeparks objects to get park opening hours
+  const CheckOpeningTimes = () => {
+    HeidePark.GetOpeningTimes().then((openingTimes) => {
+      response.json( openingTimes[0] )
+    });
+  };
+  CheckOpeningTimes();
+});
+
 app.get('/HeidePark', (request, response)=>{
   // Access wait times by Promise
   const CheckWaitTimes = () => {
