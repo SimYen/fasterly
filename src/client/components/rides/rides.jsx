@@ -12,8 +12,13 @@ class Rides extends React.Component {
 
     this.state = {
       rides:null,
-      term:""
+      term:"",
+      operating: false,
+      fastPassStatus: false
     };
+
+    this.getTerm = this.getTerm.bind(this);
+    this.getOperating = this.getOperating.bind(this);
   }
 
   getRides(park) {
@@ -38,10 +43,13 @@ class Rides extends React.Component {
   }
 
   getTerm(event) {
-    console.log(event.target.value);
-    let term = event.target.value;
     // set search term to filter rides
-    this.setState({term});
+    this.setState({term: event.target.value});
+  }
+
+  getOperating(event) {
+    // toggle operating status to filter rides
+    this.setState({operating: !this.state.operating});
   }
 
   render() {
@@ -53,11 +61,13 @@ class Rides extends React.Component {
     const parkKey = park ? park.key : "";
 
     const rides = this.state.park ? this.state.park
-        .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase()))
+        .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())
+            && ride.status.toLowerCase().includes(this.state.operating ? "Operating".toLowerCase() : ""))
         .sort((a, b) => (a.waitTime > b.waitTime) ? 1 : -1)
         .map((ride, index) => {
           return(
-            <li key={index}>{ride.name}: {ride.waitTime} minutes wait ({ride.status}, Fastpass: { ride.fastPass ? "Available" : "Not Available" })</li>
+            <li key={index}>{ride.name}: {ride.waitTime} minutes wait
+            ({ride.status}, Fastpass: { ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>{ride.meta.fastPassStartTime} to {ride.meta.fastPassEndTime}</span> : "Fully redeemed" ) : "Not Available" })</li>
           )
     }) :"";
 
@@ -68,9 +78,12 @@ class Rides extends React.Component {
         <button onClick={()=>{this.getRides(parkKey)}}>Load Rides</button>
         <p>Search by Ride Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
         <i>*to hide until all rides are loaded<br/>
-        *to add filter by status, fastPass</i></p>
-
+        *to add filter by fastPass but display all rides if unchecked</i></p>
         <h4>Rides (by order of waiting time)</h4>
+        <p>
+          <input type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
+          {' '} In Operation
+        </p>
         <ul>
           {rides}
         </ul>

@@ -13,6 +13,7 @@ class Themeparks extends React.Component {
       area:""
     };
 
+    this.getTerm = this.getTerm.bind(this);
     this.getLocation = this.getLocation.bind(this);
   }
 
@@ -30,17 +31,17 @@ class Themeparks extends React.Component {
   }
 
   getTerm(event) {
-    console.log(event.target.value);
-    let term = event.target.value;
     // set search term to filter parks
-    this.setState({term});
+    this.setState({term: event.target.value});
   }
 
   getLocation(event) {
+    // set location term to filter parks
     this.setState({area: event.target.value});
   }
 
   render() {
+    // sort themeparks by name
     const parks = this.state.parks ? this.state.parks.sort((a, b) => (a.name > b.name) ? 1 : -1) : "";
     const parkNames = parks ? parks
       .filter((park) => park.name.toLowerCase().includes(this.state.term.toLowerCase())
