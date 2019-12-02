@@ -285,7 +285,7 @@ app.get('/OpeningTimes', (request, response)=>{
   // you can also call GetOpeningTimes on themeparks objects to get park opening hours
   const CheckOpeningTimes = () => {
     ShanghaiDisneyResortMagicKingdom.GetOpeningTimes().then((openingTimes) => {
-      response.json( openingTimes )
+      response.json( openingTimes[0] )
     });
   };
   CheckOpeningTimes();

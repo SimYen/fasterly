@@ -13,6 +13,7 @@ class Rides extends React.Component {
     super();
 
     this.state = {
+      hours:null,
       rides:null,
       term:"",
       operating: false,
@@ -44,6 +45,26 @@ class Rides extends React.Component {
     CheckWaitTimes();
   }
 
+  getTimes() {
+    // get url of selected park
+    const url = '/OpeningTimes';
+
+    const CheckOpeningTimes = () => {
+      axios.get(url)
+        .then((response) => {
+          const data = response.data
+          console.log( "hours:", data);
+          this.setState({ hours: data })
+        }).catch((error)=>{
+          console.log(error);
+        })
+        // .then(() => {
+        //     setTimeout(CheckWaitTimes, 1000 * 60 ); // refresh every 1 minute
+        // });
+    }
+    CheckOpeningTimes();
+  }
+
   getTerm(event) {
     // set search term to filter rides
     this.setState({term: event.target.value});
@@ -62,6 +83,8 @@ class Rides extends React.Component {
     // set key of selected park
     const parkKey = park ? park.key : "";
 
+    const hours = this.state.hours ? <p>Opens: {moment(this.state.hours.openingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} Closes: {moment(this.state.hours.closingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</p> : "";
+
     const rides = this.state.park ? this.state.park
         .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())
             && ride.status.toLowerCase().includes(this.state.operating ? "Operating".toLowerCase() : ""))
@@ -76,7 +99,8 @@ class Rides extends React.Component {
     return (
       <div>
         <h3>{parkName}</h3>
-        <i>*to get park opening & closing time</i><br/>
+        <button onClick={()=>{this.getTimes()}}>Park Hours</button>
+        {hours}<br/>
         <button onClick={()=>{this.getRides(parkKey)}}>Load Rides</button>
         <p>Search by Ride Name  <input onChange = {(event) => { this.getTerm(event) }}/><br/>
         <i>*to hide until all rides are loaded<br/>
