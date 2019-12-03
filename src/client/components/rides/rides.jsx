@@ -18,6 +18,7 @@ class Rides extends React.Component {
       rides:null,
       term:"",
       operating: true,
+      alphabetical: false,
       fastPassStatus: false
     };
 
@@ -25,6 +26,7 @@ class Rides extends React.Component {
     this.getOperating = this.getOperating.bind(this);
   }
 
+  // to check if prop is received
   static getDerivedStateFromProps(props, state) {
     if (props.park) {
       if (props.park.key !== state.key) {
@@ -33,13 +35,14 @@ class Rides extends React.Component {
       };
     }
   }
-
     // Return null if the state hasn't changed
     return null;
   }
 
+  // to get park hours and rides when park received
   componentDidUpdate(prevProps, prevState) {
     if (this.props.park !== prevProps.park) {
+      console.log(this.props.park.name);
       this.getTimes(this.props.park.key);
       this.getRides(this.props.park.key);
     }
@@ -58,15 +61,11 @@ class Rides extends React.Component {
         }).catch((error)=>{
           console.log(error);
         })
-        // .then(() => {
-        //     setTimeout(CheckWaitTimes, 1000 * 60 ); // refresh every 1 minute
-        // });
     }
     CheckOpeningTimes();
   }
 
   getRides(park) {
-    console.log(park);
     // get url of selected park
     const url = '/' + park;
 
@@ -74,7 +73,7 @@ class Rides extends React.Component {
       axios.get(url)
         .then((response) => {
           const data = response.data
-          console.log( "data:", data);
+          console.log( "rides:", data);
           this.setState({ park: data })
         }).catch((error)=>{
           console.log(error);
@@ -96,6 +95,16 @@ class Rides extends React.Component {
     this.setState({operating: !this.state.operating});
   }
 
+  getAlphabetical(event) {
+    // toggle display status to sort rides
+    this.setState({alphabetical: !this.state.alphabetical});
+  }
+
+  getFastPass(event) {
+    // toggle display to sort fast pass
+    this.setState({fastPassStatus: !this.state.fastPassStatus});
+  }
+
   render() {
     // receive park selected from App
     const park = this.props.park
@@ -104,36 +113,42 @@ class Rides extends React.Component {
     // set key of selected park
     const parkKey = park ? park.key : "";
 
-    // if (this.props.park) {
-    //   this.getTimes(parkKey);
-    //   this.getRides(parkKey);
-    // }
-
     const hours = this.state.hours ? <p>Opens: {moment.parseZone(this.state.hours.openingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} Closes: {moment.parseZone(this.state.hours.closingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</p> : "";
 
-    const rides = this.state.park ? this.state.park
+    let list = this.state.park ? this.state.park
         .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())
             && ride.status.toLowerCase().includes(this.state.operating ? "Operating".toLowerCase() : ""))
         .sort((a, b) => (a.name < b.name) ? 1 : -1)
-        .sort((a, b) => (a.waitTime > b.waitTime) ? 1 : -1)
-        .map((ride, index) => {
+        .sort((a, b) => (a.waitTime > b.waitTime) ? 1 : -1) : "";
+
+    if(list !== "" && this.state.alphabetical){
+      list = list.sort((a, b) => (a.name > b.name) ? 1 : -1)
+    }
+
+    if(list !== "" && this.state.fastPassStatus){
+      list = list.filter((ride) => ride.fastPass ? true : "" )
+    }
+
+    const rides = list ? list.map((ride, index) => {
           return(
             <li key={index}>{ride.name}: {ride.waitTime} minutes wait
-            ({ride.status}, Fastpass: { ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>{moment.parseZone(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : "Fully redeemed" ) : "Not Available" })</li>
-          )
-    }) :"";
+            ({ride.status}{ ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>, Fastpass: {moment.parseZone(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : "Fully redeemed" ) : "" })</li>
+          )}) : "";
 
     return (
       <div>
         <h3>{parkName}</h3>
-        {/* <button onClick={()=>{this.getTimes(parkKey)}}>Park Hours</button> */}
         {hours}
-        {/* <button onClick={()=>{this.getRides(parkKey)}}>Load Rides</button> */}
-        <h4>Rides&nbsp;&nbsp;<input placeholder="Search by ride name" onChange = {(event) => { this.getTerm(event) }}/></h4>
+        <h4><button onClick={()=>{this.getRides(parkKey)}}>Update Wait Times</button>&nbsp;
+        Rides&nbsp;&nbsp;<input placeholder="Search by ride name" onChange = {(event) => { this.getTerm(event) }}/></h4>
         <i>*Displaying rides in operation, by alphabetical order, in order of waiting time.</i>
         <p>
           <input type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
-          {' '} See All Rides
+          {' '} All Rides (*includes rides that are closed)
+          <input type="checkbox" onChange = {(event) => { this.getAlphabetical(event) }}/>
+          {' '} Alphabetical Order
+          <input type="checkbox" onChange = {(event) => { this.getFastPass(event) }}/>
+          {' '} Fastpass Available
         </p>
         <ul>
           {rides}
