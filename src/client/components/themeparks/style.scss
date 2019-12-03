@@ -1,0 +1,13 @@
+.selectPark {
+	align-items: flex-end;
+}
+
+.themeparks {
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.cardHeight {
+	min-height: 8rem
+}

@@ -27,7 +27,7 @@ class App extends React.Component {
           <div className="inner">
             <h1 className={`${style["masthead-brand"]}`}>Faster.ly</h1>
             <nav className={`nav ${style["nav-masthead"]} justify-content-center`}>
-              <a className={`${style["nav-link"]} ${style.active}`} href="/">Select another park</a>
+              <a className={`${style["nav-link"]} ${style.active}`} href="/">Select Park</a>
             </nav>
           </div>
         </header>
@@ -36,8 +36,8 @@ class App extends React.Component {
           <p className="lead">Select the themepark you are at, and see the wait times for the rides.<br/>
           Check the current fastpass time slots too!</p>
           <h3 className="cover-heading">Where Are You Today?</h3>
-            <Themeparks setPark={(park)=>this.getPark(park)}/>
-            <Rides park={this.state.park}/>
+          <Themeparks setPark={(park)=>this.getPark(park)}/>
+          <Rides park={this.state.park}/>
         </main>
         <footer className={`${style.mastfoot} mt-auto`}>
           <div className="inner">

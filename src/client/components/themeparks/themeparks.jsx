@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './style.scss';
 
 const axios = require('axios');
 
@@ -52,7 +53,16 @@ class Themeparks extends React.Component {
                       && park.area.toLowerCase().includes(this.state.area.toLowerCase()))
       .map((park, index) => {
         return(
-          <p key={index}><a onClick={() => { this.props.setPark(park) }}>{park.name}</a></p>
+          <div key={index} className="col-sm-6 p-1">
+          <a onClick={() => { this.props.setPark(park) }}>
+          <div className="card text-white bg-danger mb-2">
+            <div className={`${style.cardHeight} card-body`}>
+              <h5 className="card-title">{park.name}</h5>
+              <h6 className="card-subtitle mb-2 text-muted">{park.area}</h6>
+            </div>
+          </div>
+          </a>
+          </div>
         )
     }) : "";
 
@@ -61,34 +71,45 @@ class Themeparks extends React.Component {
         {/* <button className="btn btn-primary" onClick={() => { this.getParks() }}>
           View All Themeparks
         </button> */}
-        <h5>Select Themepark&nbsp;&nbsp;
-        <input placeholder="Search by park name" onChange = {(event) => { this.getTerm(event) }}/>
-        &nbsp;<label>
-          <select value={this.state.area} onChange={this.getLocation}>
-            <option value=""> Filter by timezone</option>
-            <optgroup label="Asia"/>
-              <option value="Hong_Kong">Hong Kong</option>
-              <option value="Shanghai">Shanghai</option>
-              <option value="Singapore">Singapore</option>
-              <option value="Tokyo">Tokyo</option>
-            <optgroup label="America"/>
-              <option value="Chicago">Chicago</option>
-              <option value="Los_Angeles">Los Angeles</option>
-              <option value="New_York">New York</option>
-              <option value="Mexico_City">Mexico City</option>
-              <option value="Toronto">Toronto</option>
-            <optgroup label="Europe"/>
-              <option value="Amsterdam">Amsterdam</option>
-              <option value="Berlin">Berlin</option>
-              <option value="London">London</option>
-              <option value="Madrid">Madrid</option>
-              <option value="Paris">Paris</option>
-          </select>
-        </label></h5>
-        <div className="container themeparks-group">
-          <div className="row">
-            {parkNames}
+        <div className={`row ${style.selectPark}`}>
+          <div className="col-md-4">
+            <h5>Select Themepark</h5>
           </div>
+          <div className="col-md-4">
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <span className="input-group-text">@</span>
+            </div>
+            <input className="form-control" placeholder="Park Name" onChange = {(event) => { this.getTerm(event) }}/>
+            </div>
+          </div>
+          <div className="col-md-4">
+          <label>
+            <select value={this.state.area} onChange={this.getLocation}>
+              <option value=""> By timezone</option>
+              <optgroup label="Asia"/>
+                <option value="Hong_Kong">Hong Kong</option>
+                <option value="Shanghai">Shanghai</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Tokyo">Tokyo</option>
+              <optgroup label="America"/>
+                <option value="Chicago">Chicago</option>
+                <option value="Los_Angeles">Los Angeles</option>
+                <option value="New_York">New York</option>
+                <option value="Mexico_City">Mexico City</option>
+                <option value="Toronto">Toronto</option>
+              <optgroup label="Europe"/>
+                <option value="Amsterdam">Amsterdam</option>
+                <option value="Berlin">Berlin</option>
+                <option value="London">London</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Paris">Paris</option>
+            </select>
+          </label>
+          </div>
+        </div>
+        <div className={`row ${style.themeparks}`}>
+            {parkNames}
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
 .cover-container {
-  max-width: 42em;
+  max-width: 95vw;
 }
 
 /*
@@ -11,6 +11,7 @@
 
 .masthead-brand {
   margin-bottom: 0;
+  color: #dc4345;
 }
 
 .nav-masthead .nav-link {
@@ -35,16 +36,6 @@
   border-bottom-color: #fff;
 }
 
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
-
-
 /*
  * Cover
  */
@@ -56,15 +47,24 @@
   font-weight: 700;
 }
 
-@media (min-width: 48em) {
-  .cover {
-    padding: 3rem 1.5rem;
-  }
-}
-
 /*
  * Footer
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+  .cover {
+    padding: 3rem 1.5rem;
+  }
+	.cover-container {
+	  max-width: 85vw;
+	}
 }
