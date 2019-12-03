@@ -131,8 +131,16 @@ class Rides extends React.Component {
 
     const rides = list ? list.map((ride, index) => {
           return(
-            <li key={index}>{ride.name}: {ride.waitTime} minutes wait
-            ({ride.status}{ ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>, Fastpass: {moment.parseZone(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : ", Fully redeemed" ) : "" })</li>
+            <div key={index} className="list-group-item list-group-item-secondary">
+              <div className="d-flex w-100 justify-content-between">
+                <h5 className="mb-1">{ride.name}</h5>
+                <h5>{ride.waitTime} minutes</h5>
+              </div>
+              <div className="d-flex w-100 justify-content-between">
+                <p className="mb-1">Status: {ride.status}</p>
+                <p>{ ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>Fastpass: {moment.parseZone(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : "Fastpass: Fully redeemed" ) : "" }</p>
+              </div>
+            </div>
           )}) : "";
 
     return (
@@ -140,7 +148,7 @@ class Rides extends React.Component {
         <h3>{parkName}</h3>
         {hours}
         <div className={`row justify-content-between ${style.selectRide}`}>
-          <div className="col-md-4">
+          <div className="col-md-6 text-left">
             <button className="btn btn-light" onClick={()=>{this.getRides(parkKey)}}>Update Wait Times</button>&nbsp;
             <span>Rides</span>
           </div>
@@ -154,17 +162,33 @@ class Rides extends React.Component {
           </div>
         </div>
         <i className={`${style.rideOrder}`}>*Displaying rides in operation, by alphabetical order, in order of waiting time.</i>
-        <p>
-          <input type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
-          {' '} All Rides (*includes rides that are closed)
-          <input type="checkbox" onChange = {(event) => { this.getAlphabetical(event) }}/>
-          {' '} Alphabetical Order
-          <input type="checkbox" onChange = {(event) => { this.getFastPass(event) }}/>
-          {' '} Fastpass Available
-        </p>
-        <ul>
-          {rides}
-        </ul>
+        <div className="row text-left mt-2">
+          <div className="col-md-2">
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
+              <label className="form-check-label">
+                All Rides
+              </label>
+            </div>
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getAlphabetical(event) }}/>
+              <label className="form-check-label">
+                Alphabetical
+              </label>
+            </div>
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getFastPass(event) }}/>
+              <label className="form-check-label">
+                Fastpass
+              </label>
+            </div>
+          </div>
+          <div className="col-md-10">
+            <div class={`list-group ${style.listScroll}`}>
+              {rides}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

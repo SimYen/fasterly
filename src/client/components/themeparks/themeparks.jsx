@@ -53,12 +53,12 @@ class Themeparks extends React.Component {
                       && park.area.toLowerCase().includes(this.state.area.toLowerCase()))
       .map((park, index) => {
         return(
-          <div key={index} className="col-6 col-md-4 p-1">
+          <div key={index} className="col col-sm-6 col-md-4 col-lg-3 p-1">
           <a onClick={() => { this.props.setPark(park) }}>
           <div className="card text-white bg-danger mb-2">
             <div className={`${style.cardHeight} card-body`}>
               <h5 className="card-title">{park.name}</h5>
-              <h6 className="card-subtitle mb-2 text-muted">{park.area}</h6>
+              <h6 className="card-subtitle text-muted">{park.area}</h6>
             </div>
           </div>
           </a>

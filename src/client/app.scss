@@ -1,5 +1,12 @@
+/*
+ * Cover
+ */
+.cover {
+  padding: 1rem 1.5rem;
+}
+
 .cover-container {
-  max-width: 95vw;
+  max-width: 90vw;
 }
 
 /*
@@ -37,24 +44,13 @@
 }
 
 /*
- * Cover
- */
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: 700;
-}
-
-/*
  * Footer
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
 
-@media (min-width: 48em) {
+@media (min-width: 576px) {
   .masthead-brand {
     float: left;
   }

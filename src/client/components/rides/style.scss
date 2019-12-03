@@ -1,9 +1,15 @@
 .selectRide {
 	align-items: flex-end;
-	font-size: 1.2em;
+	font-size: 1.5em;
 	font-weight: 500;
 }
 
 .rideOrder {
 	font-weight: 100;
+}
+
+.listScroll {
+	max-height: 70vh;
+	overflow:scroll;
+	-webkit-overflow-scrolling: touch;
 }
