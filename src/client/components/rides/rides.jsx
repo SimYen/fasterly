@@ -1,8 +1,8 @@
 import React from 'react';
-import classnames from 'classnames';
-import styles from './style.scss';
+// import classnames from 'classnames';
+// import styles from './style.scss';
 
-const cx = classnames.bind(styles)
+// const cx = classnames.bind(styles)
 const axios = require('axios');
 var moment = require('moment');
 moment().format();

@@ -61,7 +61,7 @@ class Themeparks extends React.Component {
         {/* <button className="btn btn-primary" onClick={() => { this.getParks() }}>
           View All Themeparks
         </button> */}
-        <h3>Select Themepark&nbsp;&nbsp;
+        <h5>Select Themepark&nbsp;&nbsp;
         <input placeholder="Search by park name" onChange = {(event) => { this.getTerm(event) }}/>
         &nbsp;<label>
           <select value={this.state.area} onChange={this.getLocation}>
@@ -84,8 +84,12 @@ class Themeparks extends React.Component {
               <option value="Madrid">Madrid</option>
               <option value="Paris">Paris</option>
           </select>
-        </label></h3>
-        {parkNames}
+        </label></h5>
+        <div className="container themeparks-group">
+          <div className="row">
+            {parkNames}
+          </div>
+        </div>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import Themeparks from './components/themeparks/themeparks'
 import Rides from './components/rides/rides';
+import style from './app.scss';
 
 class App extends React.Component {
 
@@ -21,12 +22,28 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>Queue Less, Play More</h3>
-        <div className="row">
-          <Themeparks setPark={(park)=>this.getPark(park)} />
-          <Rides park={this.state.park}/>
-        </div>
+      <div className={`${style["cover-container"]} d-flex w-100 h-100 p-3 mx-auto flex-column`}>
+        <header className={`${style.masthead} mb-auto`}>
+          <div className="inner">
+            <h1 className={`${style["masthead-brand"]}`}>Faster.ly</h1>
+            <nav className={`nav ${style["nav-masthead"]} justify-content-center`}>
+              <a className={`${style["nav-link"]} ${style.active}`} href="/">Select another park</a>
+            </nav>
+          </div>
+        </header>
+        <main role="main" className={`inner ${style.cover}`}>
+          <h4 className="cover-heading">Queue Less, Play More</h4>
+          <p className="lead">Select the themepark you are at, and see the wait times for the rides.<br/>
+          Check the current fastpass time slots too!</p>
+          <h3 className="cover-heading">Where Are You Today?</h3>
+            <Themeparks setPark={(park)=>this.getPark(park)}/>
+            <Rides park={this.state.park}/>
+        </main>
+        <footer className={`${style.mastfoot} mt-auto`}>
+          <div className="inner">
+            <p>Faster.ly &copy; 2019, SimYen</p>
+          </div>
+        </footer>
       </div>
     );
   }
