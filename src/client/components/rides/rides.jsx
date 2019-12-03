@@ -1,6 +1,6 @@
 import React from 'react';
 // import classnames from 'classnames';
-// import styles from './style.scss';
+import style from './style.scss';
 
 // const cx = classnames.bind(styles)
 const axios = require('axios');
@@ -113,7 +113,7 @@ class Rides extends React.Component {
     // set key of selected park
     const parkKey = park ? park.key : "";
 
-    const hours = this.state.hours ? <p>Opens: {moment.parseZone(this.state.hours.openingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} Closes: {moment.parseZone(this.state.hours.closingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</p> : "";
+    const hours = this.state.hours ? <p>Today's Hours: {moment.parseZone(this.state.hours.openingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(this.state.hours.closingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</p> : "";
 
     let list = this.state.park ? this.state.park
         .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())
@@ -132,16 +132,28 @@ class Rides extends React.Component {
     const rides = list ? list.map((ride, index) => {
           return(
             <li key={index}>{ride.name}: {ride.waitTime} minutes wait
-            ({ride.status}{ ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>, Fastpass: {moment.parseZone(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : "Fully redeemed" ) : "" })</li>
+            ({ride.status}{ ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>, Fastpass: {moment.parseZone(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : ", Fully redeemed" ) : "" })</li>
           )}) : "";
 
     return (
       <div>
         <h3>{parkName}</h3>
         {hours}
-        <h4><button onClick={()=>{this.getRides(parkKey)}}>Update Wait Times</button>&nbsp;
-        Rides&nbsp;&nbsp;<input placeholder="Search by ride name" onChange = {(event) => { this.getTerm(event) }}/></h4>
-        <i>*Displaying rides in operation, by alphabetical order, in order of waiting time.</i>
+        <div className={`row justify-content-between ${style.selectRide}`}>
+          <div className="col-md-4">
+            <button className="btn btn-light" onClick={()=>{this.getRides(parkKey)}}>Update Wait Times</button>&nbsp;
+            <span>Rides</span>
+          </div>
+          <div className="col-md-4">
+            <div className="input-group">
+              <input type="text" className="form-control" placeholder="Ride Name" onChange = {(event) => { this.getTerm(event) }}/>
+              <div className="input-group-append">
+                <span className="input-group-text" id="basic-addon2">@</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <i className={`${style.rideOrder}`}>*Displaying rides in operation, by alphabetical order, in order of waiting time.</i>
         <p>
           <input type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
           {' '} All Rides (*includes rides that are closed)

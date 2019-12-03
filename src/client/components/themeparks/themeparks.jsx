@@ -53,7 +53,7 @@ class Themeparks extends React.Component {
                       && park.area.toLowerCase().includes(this.state.area.toLowerCase()))
       .map((park, index) => {
         return(
-          <div key={index} className="col-sm-6 p-1">
+          <div key={index} className="col-6 col-md-4 p-1">
           <a onClick={() => { this.props.setPark(park) }}>
           <div className="card text-white bg-danger mb-2">
             <div className={`${style.cardHeight} card-body`}>
@@ -76,17 +76,17 @@ class Themeparks extends React.Component {
             <h5>Select Themepark</h5>
           </div>
           <div className="col-md-4">
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">@</span>
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text">@</span>
+              </div>
+              <input className="form-control" placeholder="Park Name" onChange = {(event) => { this.getTerm(event) }}/>
+              </div>
             </div>
-            <input className="form-control" placeholder="Park Name" onChange = {(event) => { this.getTerm(event) }}/>
-            </div>
-          </div>
           <div className="col-md-4">
-          <label>
-            <select value={this.state.area} onChange={this.getLocation}>
-              <option value=""> By timezone</option>
+            <div className="input-group">
+              <select className="custom-select" value={this.state.area} onChange={this.getLocation}>
+              <option defaultValue="">All</option>
               <optgroup label="Asia"/>
                 <option value="Hong_Kong">Hong Kong</option>
                 <option value="Shanghai">Shanghai</option>
@@ -104,8 +104,11 @@ class Themeparks extends React.Component {
                 <option value="London">London</option>
                 <option value="Madrid">Madrid</option>
                 <option value="Paris">Paris</option>
-            </select>
-          </label>
+              </select>
+              <div className="input-group-append">
+                <label className="input-group-text">Timezone</label>
+              </div>
+            </div>
           </div>
         </div>
         <div className={`row ${style.themeparks}`}>
