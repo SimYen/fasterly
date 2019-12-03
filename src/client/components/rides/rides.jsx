@@ -161,34 +161,31 @@ class Rides extends React.Component {
             </div>
           </div>
         </div>
-        <i className={`${style.rideOrder}`}>*Displaying rides in operation, by alphabetical order, in order of waiting time.</i>
-        <div className="row text-left mt-2">
-          <div className="col-md-2">
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
-              <label className="form-check-label">
-                All Rides
-              </label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getAlphabetical(event) }}/>
-              <label className="form-check-label">
-                Alphabetical
-              </label>
-            </div>
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getFastPass(event) }}/>
-              <label className="form-check-label">
-                Fastpass
-              </label>
-            </div>
+        <div className="row justify-content-around">
+          <div className="form-check form-check-inline">
+            <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getOperating(event) }}/>
+            <label className="form-check-label">
+              All Rides <small>(*includes closed rides)</small>
+            </label>
           </div>
-          <div className="col-md-10">
-            <div class={`list-group ${style.listScroll}`}>
-              {rides}
-            </div>
+          <div className="form-check form-check-inline">
+            <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getAlphabetical(event) }}/>
+            <label className="form-check-label">
+              Alphabetical Order
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input className="form-check-input" type="checkbox" onChange = {(event) => { this.getFastPass(event) }}/>
+            <label className="form-check-label">
+              Fastpass
+            </label>
           </div>
         </div>
+        <i className={`${style.rideOrder}`}>*Displaying rides in operation, by alphabetical order, in order of waiting time.</i>
+        <div className={`list-group ${style.listScroll}`}>
+          {rides}
+        </div>
+
       </div>
     );
   }
