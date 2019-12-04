@@ -393,6 +393,8 @@ app.get('/TokyoDisneyResortMagicKingdomOpeningTimes', (request, response)=>{
   const CheckOpeningTimes = () => {
     TokyoDisneyResortMagicKingdom.GetOpeningTimes().then((openingTimes) => {
       response.json( openingTimes[0] )
+    }).catch((error) => {
+        console.error("ERRORRRR", error);
     });
   };
   CheckOpeningTimes();
@@ -403,7 +405,9 @@ app.get('/TokyoDisneyResortMagicKingdom', (request, response)=>{
   const CheckWaitTimes = () => {
       TokyoDisneyResortMagicKingdom.GetWaitTimes().then((rideTimes) => {
         response.json( rideTimes );
-      });
+      }).catch((error) => {
+        console.error("ERRORRRR", error);
+    });
   };
   CheckWaitTimes();
 });

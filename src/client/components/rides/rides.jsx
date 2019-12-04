@@ -141,7 +141,7 @@ class Rides extends React.Component {
                 <p>{ ride.fastPass ? ( ride.meta.fastPassStartTime ? <span>Fastpass: {moment.parseZone(ride.meta.fastPassStartTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(ride.meta.fastPassEndTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : "Fastpass: Fully redeemed" ) : "" }</p>
               </div>
             </div>
-          )}) : "";
+          )}) : "" );
 
     return (
       <div>
