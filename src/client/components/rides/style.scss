@@ -21,19 +21,21 @@
 	font-weight: 100;
 }
 
+.ride {
+	background: linear-gradient(to bottom, #2d91c2 0%,#1e528e 100%);
+}
+
 .listScroll {
 	max-height: calc(100vh - 22rem);
 	overflow:scroll;
 	-webkit-overflow-scrolling: touch;
-
-	&:nth-child(even) {
-		background: red;
-	}
-
 }
 
 @media (max-width: 576px) {
 	.listScroll {
 		max-height: calc(100vh - 32rem);
+	}
+	.rideOrder {
+		display: none;
 	}
 }

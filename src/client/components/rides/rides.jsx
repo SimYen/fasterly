@@ -131,7 +131,7 @@ class Rides extends React.Component {
 
     const rides = list ? list.map((ride, index) => {
           return(
-            <div key={index} className="list-group-item list-group-item-secondary">
+            <div key={index} className={`list-group-item ${style.ride}`}>
               <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{ride.name}</h5>
                 <h5>{ride.waitTime} minutes</h5>
@@ -148,7 +148,7 @@ class Rides extends React.Component {
         <h3 className={`${style.neon}`}>{parkName}</h3>
         <p className={`${style.neon}`}>{hours}</p>
         <div className={`row justify-content-between ${style.selectRide}`}>
-          <div className="col-md-6 text-left">
+          <div className="col-md-4 text-left">
             <button className="btn btn-light btn-sm" onClick={()=>{this.getRides(parkKey)}}><i className="fas fa-sync-alt"></i></button>&nbsp;
             <span>Rides</span>
           </div>
