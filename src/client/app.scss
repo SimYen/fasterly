@@ -1,5 +1,5 @@
 @font-face {
-	font-family: brand;
+	font-family: Monoton;
 	src: url(http://themes.googleusercontent.com/static/fonts/monoton/v3/ceRJlaOl8VqdbfWAlFaxNQ.ttf);
 }
 
@@ -16,7 +16,7 @@
 }
 
 h4 {
-	font-family: brand;
+	font-family: Monoton, Roboto, sans-serif;
 }
 
 /*
@@ -27,7 +27,7 @@ h4 {
 }
 
 .masthead-brand {
-	font-family: brand;
+	font-family: Monoton, Roboto, sans-serif;
 	--interval: 1s;
 	color: tomato;
 	--color1: orangered;
@@ -103,7 +103,7 @@ h4 {
 }
 
 .glow {
-	font-family: brand;
+	font-family: Monoton, Roboto, sans-serif;
 	color: #fff;
 	text-align: center;
 	-webkit-animation: glow 1s ease-in-out infinite alternate;
