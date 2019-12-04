@@ -31,7 +31,7 @@ class App extends React.Component {
           <div className="inner">
             <h1 className={`${style["masthead-brand"]}`}>Faster.ly</h1>
             <nav className={`nav ${style["nav-masthead"]} justify-content-center`}>
-              <a className={`${style["nav-link"]} ${style.active}`} href="/">Select Park</a>
+              <a className={`${style["nav-link"]} ${style.active}`} href="/"><i className="fab fa-fort-awesome-alt fa-lg"></i> Select Park</a>
             </nav>
           </div>
         </header>

@@ -78,7 +78,7 @@ class Themeparks extends React.Component {
           <div className="col-md-4">
             <div className="input-group">
               <div className="input-group-prepend">
-                <span className="input-group-text">@</span>
+                <span className="input-group-text"><i className="fas fa-search"></i></span>
               </div>
               <input className="form-control" placeholder="Park Name" onChange = {(event) => { this.getTerm(event) }}/>
               </div>

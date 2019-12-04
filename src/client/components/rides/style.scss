@@ -1,3 +1,16 @@
+.neon {
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
+}
+
 .selectRide {
 	align-items: flex-end;
 	font-size: 1.5em;
@@ -12,6 +25,11 @@
 	max-height: calc(100vh - 22rem);
 	overflow:scroll;
 	-webkit-overflow-scrolling: touch;
+
+	&:nth-child(even) {
+		background: red;
+	}
+
 }
 
 @media (max-width: 576px) {

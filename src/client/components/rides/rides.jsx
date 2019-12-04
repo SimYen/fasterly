@@ -113,7 +113,7 @@ class Rides extends React.Component {
     // set key of selected park
     const parkKey = park ? park.key : "";
 
-    const hours = this.state.hours ? <p>Today's Hours: {moment.parseZone(this.state.hours.openingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(this.state.hours.closingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</p> : "";
+    const hours = this.state.hours ? <span><i className="far fa-clock fa-lg"></i> {moment.parseZone(this.state.hours.openingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")} to {moment.parseZone(this.state.hours.closingTime, [moment.ISO_8601, 'HH:mm']).format("HH:mm")}</span> : "";
 
     let list = this.state.park ? this.state.park
         .filter((ride) => ride.name.toLowerCase().includes(this.state.term.toLowerCase())
@@ -145,18 +145,18 @@ class Rides extends React.Component {
 
     return (
       <div>
-        <h3>{parkName}</h3>
-        {hours}
+        <h3 className={`${style.neon}`}>{parkName}</h3>
+        <p className={`${style.neon}`}>{hours}</p>
         <div className={`row justify-content-between ${style.selectRide}`}>
           <div className="col-md-6 text-left">
-            <button className="btn btn-light" onClick={()=>{this.getRides(parkKey)}}>Update Wait Times</button>&nbsp;
+            <button className="btn btn-light btn-sm" onClick={()=>{this.getRides(parkKey)}}><i className="fas fa-sync-alt fa-lg"></i></button>&nbsp;
             <span>Rides</span>
           </div>
           <div className="col-md-4">
             <div className="input-group">
               <input type="text" className="form-control" placeholder="Ride Name" onChange = {(event) => { this.getTerm(event) }}/>
               <div className="input-group-append">
-                <span className="input-group-text" id="basic-addon2">@</span>
+                <span className="input-group-text" id="basic-addon2"><i className="fas fa-search"></i></span>
               </div>
             </div>
           </div>
