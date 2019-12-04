@@ -17,6 +17,8 @@ class App extends React.Component {
   // set selected park
   getPark(park) {
     this.setState({ park });
+    var hide = document.getElementById('themeparks');
+    hide.classList.add('d-none');
     console.log( "Park selected", park);
   }
 
@@ -32,12 +34,17 @@ class App extends React.Component {
           </div>
         </header>
         <main role="main" className={`inner ${style.cover}`}>
-          <h4 className="cover-heading">Queue Less, Play More</h4>
-          <p className="lead">Select the themepark you are at, and see the wait times for the rides.<br/>
-          Check the current fastpass time slots too!</p>
-          <h3 className="cover-heading">Where Are You Today?</h3>
-          <Themeparks setPark={(park)=>this.getPark(park)}/>
-          <Rides park={this.state.park}/>
+          <div id="themeparks" className="container">
+            <h4 className="cover-heading">Queue Less, Play More</h4>
+            <p className="lead">Select the themepark you are at, and see the wait times for the rides.<br/>
+            Check the current fastpass time slots too!</p>
+            <h3 className="cover-heading">Where Are You Today?</h3>
+
+            <Themeparks setPark={(park)=>this.getPark(park)}/>
+          </div>
+          <div id="rides" className="container">
+            <Rides park={this.state.park}/>
+          </div>
         </main>
         <footer className={`${style.mastfoot} mt-auto`}>
           <div className="inner">
