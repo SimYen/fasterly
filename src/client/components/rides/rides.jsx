@@ -149,7 +149,7 @@ class Rides extends React.Component {
         <p className={`${style.neon}`}>{hours}</p>
         <div className={`row justify-content-between ${style.selectRide}`}>
           <div className="col-md-6 text-left">
-            <button className="btn btn-light btn-sm" onClick={()=>{this.getRides(parkKey)}}><i className="fas fa-sync-alt fa-lg"></i></button>&nbsp;
+            <button className="btn btn-light btn-sm" onClick={()=>{this.getRides(parkKey)}}><i className="fas fa-sync-alt"></i></button>&nbsp;
             <span>Rides</span>
           </div>
           <div className="col-md-4">

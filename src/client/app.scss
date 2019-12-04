@@ -1,3 +1,8 @@
+@font-face {
+	font-family: brand;
+	src: url(http://themes.googleusercontent.com/static/fonts/monoton/v3/ceRJlaOl8VqdbfWAlFaxNQ.ttf);
+}
+
 /*
  * Cover
  */
@@ -10,6 +15,10 @@
 	max-width: 100vw;
 }
 
+h4 {
+	font-family: brand;
+}
+
 /*
  * Header
  */
@@ -18,8 +27,21 @@
 }
 
 .masthead-brand {
-	margin-bottom: 0;
-	color: #dc4345;
+	font-family: brand;
+	--interval: 1s;
+	color: tomato;
+	--color1: orangered;
+	--color2: firebrick;
+	--color3: maroon;
+	--color4: darkred;
+	text-shadow:
+		0 0 10px var(--color1),
+		0 0 20px var(--color2),
+		0 0 40px var(--color3),
+		0 0 80px var(--color4);
+	will-change: filter, color;
+	filter: saturate(60%);
+	animation: flicker steps(100) var(--interval) 1s infinite;
 }
 
 .nav-masthead .nav-link {
@@ -44,6 +66,10 @@
 	border-bottom-color: #fff;
 }
 
+.icon {
+	display: none;
+}
+
 /*
  * Footer
  */
@@ -63,5 +89,34 @@
 	}
 	.cover-container {
 		max-width: 85vw;
+	}
+	.icon {
+		display: block;
+	}
+}
+
+@keyframes flicker {
+	50% {
+		color: white;
+		filter: saturate(200%) hue-rotate(20deg);
+	}
+}
+
+.glow {
+	font-family: brand;
+	color: #fff;
+	text-align: center;
+	-webkit-animation: glow 1s ease-in-out infinite alternate;
+	-moz-animation: glow 1s ease-in-out infinite alternate;
+	animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+	from {
+		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+	}
+
+	to {
+		text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
 	}
 }

@@ -37,10 +37,11 @@ class App extends React.Component {
         </header>
         <main role="main" className={`inner ${style.cover}`}>
           <div id="themeparks" className="container">
+            <div className={`${style.icon}`}><i className="fab fa-fort-awesome fa-10x"></i></div>
             <h4 className="cover-heading">Queue Less, Play More</h4>
             <p className="lead">Select the themepark you are at, and see the wait times for the rides.<br/>
             Check the current fastpass time slots too!</p>
-            <h3 className="cover-heading">Where Are You Today?</h3>
+            <h3 className={`cover-heading ${style.glow}`}>Where Are You Today?</h3>
             <Themeparks setPark={(park)=>this.getPark(park)}/>
           </div>
           <div id="rides" className="container d-none">
