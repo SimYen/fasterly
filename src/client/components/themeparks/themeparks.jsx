@@ -86,7 +86,7 @@ class Themeparks extends React.Component {
           <div className="col-md-4">
             <div className="input-group">
               <select className="custom-select" value={this.state.area} onChange={this.getLocation}>
-              <option defaultValue="">All</option>
+              <option value="">All</option>
               <optgroup label="Asia"/>
                 <option value="Hong_Kong">Hong Kong</option>
                 <option value="Shanghai">Shanghai</option>

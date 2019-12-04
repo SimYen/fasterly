@@ -9,7 +9,13 @@
 }
 
 .listScroll {
-	max-height: 55vh;
+	max-height: calc(100vh - 22rem);
 	overflow:scroll;
 	-webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 576px) {
+	.listScroll {
+		max-height: calc(100vh - 32rem);
+	}
 }
