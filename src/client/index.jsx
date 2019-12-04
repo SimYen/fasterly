@@ -5,8 +5,4 @@ import App from './App';
 
 import './style.scss';
 
-const app = document.getElementById("app")
-
-if ( app !== null ) {
-    ReactDOM.render(<App />, app);
-}
+ReactDOM.render(<App />, document.getElementById('app'));
