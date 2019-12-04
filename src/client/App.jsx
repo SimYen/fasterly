@@ -19,6 +19,8 @@ class App extends React.Component {
     this.setState({ park });
     var hide = document.getElementById('themeparks');
     hide.classList.add('d-none');
+    var show = document.getElementById('rides');
+    show.classList.remove('d-none');
     console.log( "Park selected", park);
   }
 
@@ -39,10 +41,9 @@ class App extends React.Component {
             <p className="lead">Select the themepark you are at, and see the wait times for the rides.<br/>
             Check the current fastpass time slots too!</p>
             <h3 className="cover-heading">Where Are You Today?</h3>
-
             <Themeparks setPark={(park)=>this.getPark(park)}/>
           </div>
-          <div id="rides" className="container">
+          <div id="rides" className="container d-none">
             <Rides park={this.state.park}/>
           </div>
         </main>
