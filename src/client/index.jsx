@@ -5,4 +5,8 @@ import App from './App';
 
 import './style.scss';
 
-ReactDOM.render(<App />, document.getElementById("app"));
+const app = document.getElementById("app")
+
+if ( app !== null ) {
+    ReactDOM.render(<App />, app);
+}
