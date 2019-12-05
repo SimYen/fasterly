@@ -31,6 +31,7 @@ URL: https://cubehouse.github.io/themeparks/
 - Styling for appeal and mobile responsiveness.
 
 **Furthers:**
+- Troubleshoot parks that are not working on heroku.
 - Improve mobile responsiveness.
 - Improve styling.
 
