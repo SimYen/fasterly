@@ -33,6 +33,7 @@ URL: https://cubehouse.github.io/themeparks/
 **Furthers:**
 - Troubleshoot parks that are not working on heroku.
 - Improve mobile responsiveness.
+- Implement loading screen.
 - Improve styling.
 
 
