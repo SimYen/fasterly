@@ -417,6 +417,8 @@ app.get('/TokyoDisneyResortDisneySeaOpeningTimes', (request, response)=>{
   const CheckOpeningTimes = () => {
     TokyoDisneyResortDisneySea.GetOpeningTimes().then((openingTimes) => {
       response.json( openingTimes[0] )
+    }).catch((error) => {
+        console.error(error);
     });
   };
   CheckOpeningTimes();
@@ -427,7 +429,9 @@ app.get('/TokyoDisneyResortDisneySea', (request, response)=>{
   const CheckWaitTimes = () => {
       TokyoDisneyResortDisneySea.GetWaitTimes().then((rideTimes) => {
         response.json( rideTimes );
-      });
+      }).catch((error) => {
+        console.error(error);
+    });
   };
   CheckWaitTimes();
 });
