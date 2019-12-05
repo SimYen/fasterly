@@ -1,60 +1,48 @@
-React boilerplate with ES2015, Express.js, and Webpack
 
-## Technologies
+# fasterly
+### Project #4 | REACT Application
+URL: https://fasterly.herokuapp.com/
 
+**Objective of Application:**
+ To allow checking of themepark rides wait time.
+
+**Technology:**
 - React (v16)
 - Express.js (v4) as production and development server
 - Webpack 4 (production and development configurations)
-- SCSS support (+ sanitize.css included)
-- ES2015+
+- SCSS, Bootstrap 4
+- ThemePark API
+- Heroku
 
-## Features
-- preconfigured eslint and Prettier code formatter
-- React Hot Loader
-- Linux/MacOS/Windows
+**Approach:**
+1. Research and prepare a Proto Persona:
+2. Identify a Problem Statement:
+![User](https://github.com/SimYen/fasterly/blob/master/userstories.jpg)
+3. Prototype wireframes for the application.
+![Wireframe](https://github.com/SimYen/fasterly/blob/master/wireframe.png)
+4. Install ThemePark API for application.
+URL: https://cubehouse.github.io/themeparks/
+6. Code application.
+7. Apply styling.
+8. Deploy to Heroku.
 
-## Usage
+**Learning Journey:**
+- Research and utilize API data.
+- Styling for appeal and mobile responsiveness.
 
-### Make sure you have nodemon installed globally
-```
-npm install -g nodemon
-```
+**Furthers:**
+- Improve mobile responsiveness.
+- Improve styling.
+
 
 ### Installation
 ```bash
-git clone https://github.com/wdi-sg/react-express-webpack.git
-cd react-express-webpack
+git https://github.com/SimYen/fasterly.git
+cd fasterly
 npm install
-
-
-# remove boilerplate git references
-rm ./.git
-```
-
-### Scripts
-```bash
-# run development mode
-npm run dev
-
-# run production mode
 npm run build
 npm start
-
-# run prettier
-npm run prettier
-
-# run lint
-npm run lint
-
-# run on a different port
-HTTP_PORT=3001 npm run dev
 ```
-
-### Deploy
-
-Some operating systems do not copy the server files to the build directory.
-
-See the documentation here: [https://github.com/calvinmetcalf/copyfiles/blob/master/readme.md](https://github.com/calvinmetcalf/copyfiles/blob/master/readme.md)
 
 ## License
 MIT License. Free use and change.
